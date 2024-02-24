@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button JSX</title>
+    <style>
+        body{
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        button {
+            width: 200px;
+            height: 50px;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            border-radius: 15px;
+            background-color: red;
+            color: #fff;
+            transition: 0.3s ease all;
+        }
+
+        button span {
+            font-size: 32px;
+            position: absolute;
+        }
+
+        button #swipe1 {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #fff;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            animation:  swipe 0.2s linear;
+            transition: 0.3s ease all;
+        }
+
+        @keyframes swipe {
+            0%{
+                left: 135px;
+
+            }
+
+            100% {
+                left: 20px;
+            }
+
+        }
+
+        button #text1 {
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+        }
+
+        button.active #swipe1 {
+            animation: swipe1 0.2s linear;
+            animation-fill-mode: forwards;
+            transition: 0.3s ease all;
+        }
+
+        @keyframes swipe1 {
+            0%{
+                left: 20px;
+            }
+
+            100%{
+                left: 135px;
+            }
+        }
+
+        button.active {
+            background-color: green;
+            transition: 0.3s ease all;
+
+        }
+
+        button.active #text1 {
+            right: initial;
+            left: 40px;
+            transition: 0.3s ease all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Poxxuy Rejim</h1>
+    <button id="switchbtn" onclick="myFunction()">
+        <span id="swipe1"></span>
+        <span id="text1">Off</span>
+    </button>
+
+    <script>
+        function myFunction () {
+            var element = document.getElementById('switchbtn');
+            element.classList.toggle('active')
+
+            if (element.classList.contains('active')) {
+              document.getElementById('text1').innerText = "ON"  
+            } else {
+                document.getElementById('text1').innerText = "Off" 
+            }
+        }
+    </script>
+</body>
+</html>
